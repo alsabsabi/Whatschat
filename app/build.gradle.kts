@@ -1,15 +1,14 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.example"
+    namespace = "com.whatschat"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.aistudio.whatschat.app"
+        applicationId = "com.whatschat"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
