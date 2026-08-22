@@ -22,7 +22,7 @@ jobs:
     - name: Setup and Execute Gradle Build
       uses: gradle/actions/setup-gradle@v4
       with:
-        gradle-version: '8.9'
+        gradle-version: '8.4'
         arguments: assembleDebug --no-daemon --stacktrace -x test -x lint
 
     - name: Upload APK
