@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
+    - name: Checkout Repository
       uses: actions/checkout@v4
 
     - name: Set up JDK 17
@@ -19,18 +19,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup Gradle
+    - name: Setup and Execute Gradle Build
       uses: gradle/actions/setup-gradle@v4
-
-    - name: Make gradlew executable
-      run: |
-        if [ ! -f "gradlew" ]; then
-          gradle wrapper --gradle-version 8.9
-        fi
-        chmod +x gradlew
-
-    - name: Build Debug APK
-      run: ./gradlew assembleDebug --no-daemon --stacktrace -x test -x lint
+      with:
+        gradle-version: '8.9'
+        arguments: assembleDebug --no-daemon --stacktrace -x test -x lint
 
     - name: Upload APK
       if: success()
