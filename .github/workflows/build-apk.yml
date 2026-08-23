@@ -19,11 +19,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup and Execute Gradle Build
-      uses: gradle/actions/setup-gradle@v4
+    - name: Setup Gradle 8.6
+      uses: gradle/actions/setup-gradle@v3
       with:
-        gradle-version: '8.4'
-        arguments: assembleDebug --no-daemon --stacktrace -x test -x lint
+        gradle-version: 8.6
+
+    - name: Build Debug APK
+      run: gradle assembleDebug --no-daemon --stacktrace -x test -x lint
 
     - name: Upload APK
       if: success()
